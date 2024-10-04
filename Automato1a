@@ -1,6 +1,7 @@
 class AFD:
     def __init__(self):
         # Definindo o estado inicial e os estados de aceitação
+        #expressão regular: (ab*c*)*
         self.estado_inicial = 'q0'
         self.estados_aceitacao = {'q0','q1','q2'}
         # Definindo a tabela de transições
@@ -9,10 +10,10 @@ class AFD:
             'q1': {'a':'q1','b': 'q1', 'c': 'q2'},
             'q2': {'c':'q2', 'a':'q1'}
         }
-        # Estado atual do autômato
-        self.estado_atual = self.estado_inicial
+        
 
     def processar(self, cadeia):
+        self.estado_atual = self.estado_inicial
         for simbolo in cadeia:
             if simbolo in self.transicoes[self.estado_atual]:
                 self.estado_atual = self.transicoes[self.estado_atual][simbolo]
@@ -26,7 +27,7 @@ class AFD:
 afd = AFD()
 
 # Teste de algumas cadeias
-cadeias = ['abc', 'abab','abcabababacabc', 'acbaa','abcbc' 'abcbcbc']
+cadeias = ['abc', 'abab','abcabababacabc', 'acbaa','abcbc' 'abcbcbc','abcabbbbbbbccccccabcabcabbbccc','']
 for cadeia in cadeias:
     if afd.processar(cadeia):
         print(f"A cadeia '{cadeia}' foi aceita.")
