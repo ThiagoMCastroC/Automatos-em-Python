@@ -14,11 +14,11 @@ class AFD:
             'q6': {'a':'q7'},
             
         }
-        # Estado atual do autômato
-        self.estado_atual = self.estado_inicial
+       
         #(aaa(b | c)*) |( (b | c)* aaa)
 
     def processar(self, cadeia):
+        self.estado_atual = self.estado_inicial
         for simbolo in cadeia:
             if simbolo in self.transicoes[self.estado_atual]:
                 self.estado_atual = self.transicoes[self.estado_atual][simbolo]
